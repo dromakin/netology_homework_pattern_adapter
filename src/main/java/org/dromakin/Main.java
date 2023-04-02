@@ -12,9 +12,16 @@ public class Main {
         );
 
         Ints intsCalc = new IntsCalculator();
+        System.out.println(IntsCalculator.abs(-4));
         System.out.println(intsCalc.sum(2, 2));
         System.out.println(intsCalc.sum(10, 22));
         System.out.println(intsCalc.mult(2, 10));
+        System.out.println(intsCalc.mult(2, -3));
+        System.out.println(intsCalc.mult(-2, -3));
+        System.out.println(intsCalc.mult(-2, 3));
         System.out.println(intsCalc.pow(2, 10));
+        System.out.println(intsCalc.pow(-2, 10));
+        System.out.println(intsCalc.pow(2, -10));
+        System.out.println(intsCalc.pow(-2, -10));
     }
 }

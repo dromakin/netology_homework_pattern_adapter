@@ -7,6 +7,16 @@ public class IntsCalculator implements Ints {
         this.target = new Calculator();
     }
 
+    public static int abs(int arg) {
+        int result = arg;
+
+        if (arg < 0) {
+            result = -arg;
+        }
+
+        return result;
+    }
+
     @Override
     public int sum(int arg0, int arg1) {
         return arg0 + arg1;
@@ -14,23 +24,28 @@ public class IntsCalculator implements Ints {
 
     @Override
     public int mult(int arg0, int arg1) {
-        int result = arg0;
+        boolean negative = arg0 < 0 ^ arg1 < 0;
+        int result = abs(arg0);
 
-        for (int i = 1; i < arg1; i++) {
-            result = sum(result, arg0);
+        for (int i = 1; i < abs(arg1); i++) {
+            result = sum(result, abs(arg0));
         }
 
-        return result;
+        return negative ? -result : result;
     }
 
     @Override
     public int pow(int a, int b) {
-        int result = a;
+        boolean negativePow = b < 0;
+        boolean negative = a < 0;
+        int result = abs(a);
 
-        for (int i = 1; i < b; i++) {
-            result = mult(result, a);
+        for (int i = 1; i < abs(b); i++) {
+            result = mult(result, abs(a));
         }
 
-        return result;
+        result = negativePow ? (1 / result) : result;
+
+        return negative ? -result : result;
     }
 }
